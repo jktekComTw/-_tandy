@@ -28,29 +28,34 @@ function processForm(formObject){
   var ed = formObject.ed;
   console.log('起始與結束日期:'+sd+"~"+ed);
   Logger.log('起始與結束日期:'+sd+"~"+ed);
-  FitingData(sd,ed);
+  testListDatesBetween(sd,ed,3);  //3 means D
 }
 //gen each element and let they do their demand routine
 function testListDatesBetween(sd,ed,initialElement) {
   var startDate = sd;
   var endDate = ed;
   var dates = listDatesBetween(startDate, endDate);
-  var i=0;
-
-  dates.forEach(function(date) {
-    console.log(date.toDateString());
-    ss.getRange( i+1,initialElement , 1, 1).setValue(date.toDateString);
-    i++;
+  
+  // var i=0;
+  var sheet=SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  dates.forEach(function(dt) {
+    let day=dt.getDate();
+    let mon=dt.getMonth();
+    day=parseInt(day,10);
+    mon=mon+1;
+    console.log(day);
+    let range=sheet.getRange(1,initialElement+day);
+    range.setValue(mon.toString()+"/"+day.toString());
   });
 }
 
 
 
-function FitingData(sd,ed) {
-  var ss=SpreadsheetApp.getActiveSpreadsheet();
-  let startElement=D1;
+// function FitingData(sd,ed) {
+//   var ss=SpreadsheetApp.getActiveSpreadsheet();
+//   let startElement=D1;
   
-  testListDatesBetween(sd,ed,startElement);
+//   testListDatesBetween(sd,ed,startElement);
 
     
 
@@ -62,4 +67,4 @@ function FitingData(sd,ed) {
   // SpreadsheetApp.getActive().getSheetByName('篩選結果')
   // getRowFitRange(Alast,arry_0,Date.parse(sd),Date.parse(ed),sheet);
   
-}
+// }
