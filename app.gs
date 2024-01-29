@@ -1,11 +1,14 @@
+const D=4;
+
 function onOpen() {
   SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
       .createMenu('漆屋功能')
-      .addItem('test', 'showSidebar')
+      .addItem('產生日期', 'showSidebar')
+      .addItem('複製並累加', 'wrapCopyAndAcc4Grids')
       .addToUi();
 }
 
-const D=4;
+
 
 function showSidebar() {
   
@@ -20,6 +23,8 @@ function showSidebar() {
       .showSidebar(html);
 }
 
+
+
 function processForm(formObject){
 
   //close the sidebar
@@ -31,8 +36,11 @@ function processForm(formObject){
   var ed = formObject.ed;
   console.log('起始與結束日期:'+sd+"~"+ed);
   Logger.log('起始與結束日期:'+sd+"~"+ed);
-  testListDatesBetween(sd,ed,3);  //3 means D
+  testListDatesBetween(sd,ed,D);  //4 means D
 }
+
+
+
 //gen each element and let they do their demand routine
 function testListDatesBetween(sd,ed,D) {
   var startDate = sd;
@@ -42,30 +50,18 @@ function testListDatesBetween(sd,ed,D) {
   dates.forEach(function(dt) {
     let day=dt.getDate();
     let mon=dt.getMonth();
+    let year=dt.getFullYear()-1911;
     day=parseInt(day,10);
     mon=mon+1;
-    console.log(day);
+    // console.log(day);
     let range=sheet.getRange(1,(D-1)+day);
-    range.setValue(mon.toString()+"/"+day.toString());
+    let workdate=(mon.toString()+'/'+day.toString());
+    range.setValue(workdate.toString());
+    range.setNumberFormat('@');
+
   });
 }
 
 
 
-// function FitingData(sd,ed) {
-//   var ss=SpreadsheetApp.getActiveSpreadsheet();
-//   let startElement=D1;
-  
-//   testListDatesBetween(sd,ed,startElement);
 
-    
-
-  // var lastColumn = ss.getLastColumn();
-  // var lastRow = ss.getLastRow();
-  // var arry_0=ss.getSheetValues(1,1,lastRow,lastColumn);
-  // Logger.log(arry_0);
-  // createNewSheet();
-  // SpreadsheetApp.getActive().getSheetByName('篩選結果')
-  // getRowFitRange(Alast,arry_0,Date.parse(sd),Date.parse(ed),sheet);
-  
-// }
