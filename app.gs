@@ -5,11 +5,14 @@ function onOpen() {
       .addToUi();
 }
 
-
+const D=4;
 
 function showSidebar() {
+  
   var sheet = SpreadsheetApp.getActive().getSheetByName("no_acumulation");
   sheet.activate();
+  let range=sheet.getRange(1,D,1,100);
+  range.setValue("");
   
   var html = HtmlService.createHtmlOutputFromFile('options')
       .setTitle('請選擇日期範圍');
@@ -31,12 +34,10 @@ function processForm(formObject){
   testListDatesBetween(sd,ed,3);  //3 means D
 }
 //gen each element and let they do their demand routine
-function testListDatesBetween(sd,ed,initialElement) {
+function testListDatesBetween(sd,ed,D) {
   var startDate = sd;
   var endDate = ed;
   var dates = listDatesBetween(startDate, endDate);
-  
-  // var i=0;
   var sheet=SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   dates.forEach(function(dt) {
     let day=dt.getDate();
@@ -44,7 +45,7 @@ function testListDatesBetween(sd,ed,initialElement) {
     day=parseInt(day,10);
     mon=mon+1;
     console.log(day);
-    let range=sheet.getRange(1,initialElement+day);
+    let range=sheet.getRange(1,(D-1)+day);
     range.setValue(mon.toString()+"/"+day.toString());
   });
 }
