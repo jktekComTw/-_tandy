@@ -6,7 +6,20 @@ function onOpen() {
       .addItem('產生日期', 'showSidebar')
       .addItem('複製並累加', 'wrapCopyAndAcc4Grids')
       .addToUi();
+  SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
+      .createMenu('漆屋列印報表')
+      .addItem('列印施工日誌', function(){
+        ToPrintWorkDiary();
+      })
+      .addItem('列印監照報表', function(){
+        console.log("not implemented yet");
+      })
+      .addItem('列印施工明細', function(){
+        console.log("not implemented yet");
+      })
+      .addToUi();
 }
+
 
 
 
@@ -50,12 +63,12 @@ function testListDatesBetween(sd,ed,D) {
   dates.forEach(function(dt) {
     let day=dt.getDate();
     let mon=dt.getMonth();
-    let year=dt.getFullYear()-1911;
+    let year=dt.getFullYear();
     day=parseInt(day,10);
     mon=mon+1;
     // console.log(day);
     let range=sheet.getRange(1,(D-1)+day);
-    let workdate=(mon.toString()+'/'+day.toString());
+    let workdate=(year.toString()+'/'+mon.toString()+'/'+day.toString());
     range.setValue(workdate.toString());
     range.setNumberFormat('@');
 
