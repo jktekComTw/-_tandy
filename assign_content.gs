@@ -7,14 +7,10 @@ function showDayOfWeek(dateString) {
   var today = new Date(dateString); // 獲取當前日期
   var dayOfWeek = today.getDay(); // 獲取星期幾的數字表示
   console.log(dayOfWeek);
-  // 定義一個數組，用於將數字轉換為中文星期表示
   var daysInChinese = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
   
-  // 獲取中文表示
   var chineseDayOfWeek = daysInChinese[dayOfWeek];
   
-  // 顯示結果
-  Logger.log(chineseDayOfWeek);
   return chineseDayOfWeek;
 }
 
@@ -28,7 +24,6 @@ function mapContent4no_acc() {
   var columns_src = [];
   var numRows_src = values_src.length;
   var numCols_src = values_src[0].length;
-  // console.log(numCols_src);
   for (var col = 0; col < numCols_src; col++) {
     columns_src.push([]);
   }
@@ -42,11 +37,9 @@ function mapContent4no_acc() {
   for(var i=D-1;i<numCols_src;i++){
     
     var tempSheet=copySheet4tempPasteUse(gspreadsheet.getSheetByName('施工日誌'),'temp'+'施工'+(i-(D-1)));
-    console.log(columns_src[i][0]);
     tempSheet.getRange("S3:T3").setValue(showDayOfWeek(columns_src[i][0]));  //show day of week
     
     let dtt=columns_src[i][0].toString();
-    console.log(dtt);
     let dt=new Date(dtt);
     let day=dt.getDate();
     let mon=dt.getMonth();
@@ -54,8 +47,6 @@ function mapContent4no_acc() {
     day=parseInt(day,10);
     mon=mon+1;
     let taiwan_format=('民國'+year.toString()+'年'+mon.toString()+'月'+day.toString()+'日');
-    console.log(taiwan_format);
-    // return;
     tempSheet.getRange("P3:R3").setValue(taiwan_format);  //show date in taiwan format
     tempSheet.getRange("D3").setValue(columns_src[i][1]);
     tempSheet.getRange("G3").setValue(columns_src[i][2]);
