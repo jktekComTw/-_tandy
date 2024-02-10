@@ -8,15 +8,13 @@ function onOpen() {
       .addToUi();
   SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
       .createMenu('漆屋列印報表')
-      .addItem('列印施工日誌', function(){
-        ToPrintWorkDiary();
-      })
-      .addItem('列印監照報表', function(){
-        console.log("not implemented yet");
-      })
-      .addItem('列印施工明細', function(){
-        console.log("not implemented yet");
-      })
+      .addItem('列印施工日誌', 'ToPrintWorkDiary')
+      // .addItem('列印監照報表', function(){
+      //   console.log("not implemented yet");
+      // })
+      // .addItem('列印施工明細', function(){
+      //   console.log("not implemented yet");
+      // })
       .addToUi();
 }
 

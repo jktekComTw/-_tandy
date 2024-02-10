@@ -36,9 +36,9 @@ function mapContent4no_acc() {
   
   for(var i=D-1;i<numCols_src;i++){
     
-    var tempSheet=copySheet4tempPasteUse(gspreadsheet.getSheetByName('施工日誌'),'temp'+'施工'+(i-(D-1)));
+    var tempSheet=copySheet4tempPasteUse(gspreadsheet.getSheetByName('施工日誌'),'temp'+'施工'+(i-(D-2)));
     tempSheet.getRange("S3:T3").setValue(showDayOfWeek(columns_src[i][0]));  //show day of week
-    
+    tempSheet.getRange("C2").setValue((i-(D-2)).toString());  //serial no.
     let dtt=columns_src[i][0].toString();
     let dt=new Date(dtt);
     let day=dt.getDate();
@@ -51,7 +51,7 @@ function mapContent4no_acc() {
     tempSheet.getRange("D3").setValue(columns_src[i][1]);
     tempSheet.getRange("G3").setValue(columns_src[i][2]);
     
-    tempSheet.getRange("G12").setValue(columns_src[i][5-1]);
+    tempSheet.getRange("G12:H12").setValue(columns_src[i][6-1]);
     tempSheet.getRange("G13:H14").setValue(columns_src[i][7-1]);
     tempSheet.getRange("G15:H15").setValue(columns_src[i][8-1]);
     tempSheet.getRange("G17:H18").setValue(columns_src[i][10-1]);
@@ -104,7 +104,7 @@ function mapContent4with_acc() {
     // console.log(columns_src[i]);
     // continue;
     
-    var tempSheet=gspreadsheet.getSheetByName('temp'+'施工'+(i-(D-1)));
+    var tempSheet=gspreadsheet.getSheetByName('temp'+'施工'+(i-(D-2)));
     
     tempSheet.getRange("I12:J12").setValue(columns_src[i][6-1]);
     tempSheet.getRange("I13:J14").setValue(columns_src[i][7-1]);
