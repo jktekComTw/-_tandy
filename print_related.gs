@@ -43,23 +43,4 @@ function print_0(NAMEsheet) {
 
 
 
-//select the sheet all which not hidden
-function processVisibleSheets() {
-  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  var allSheets = spreadsheet.getSheets();
-  
-  // Filter out hidden sheets
-  var visibleSheets = allSheets.filter(function(sheet) {
-    return !sheet.isSheetHidden();
-  });
 
-  // Now, you can loop through all visible sheets and perform actions
-  visibleSheets.forEach(function(sheet) {
-    // For example, log the name of each visible sheet
-    console.log(sheet.getName());
-    
-    // You can perform more actions here
-    // For example: set the value of the first cell in each visible sheet
-    // sheet.getRange('A1').setValue('Hello, Sheet!');
-  });
-}

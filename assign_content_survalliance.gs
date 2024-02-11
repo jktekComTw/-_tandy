@@ -19,6 +19,7 @@ function gen_survalliance_Tempreport() {
       tempSheet.getRange('F3').setValue(sheet_diary.getRange('G3').getValue());
 
       tempSheet.getRange('J3').setValue(sheet_diary.getRange('P3').getValue());
+      tempSheet.getRange('K3').setValue(sheet_diary.getRange('S3:T3').getValue());
 
       tempSheet.getRange('B7').setValue(sheet_diary.getRange('H6').getValue());
       tempSheet.getRange('I7').setValue(sheet_diary.getRange('M6').getValue());
