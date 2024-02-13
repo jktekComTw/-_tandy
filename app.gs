@@ -1,4 +1,5 @@
 const D=4;
+const gspreadsheet = SpreadsheetApp.getActive();
 
 function onOpen() {
   SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
@@ -9,14 +10,14 @@ function onOpen() {
   SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
       .createMenu('漆屋報表')
       .addItem('產生施工日誌', 'ToPrintWorkDiary')
-      .addItem('產生監照報表', 'gen_survalliance_Tempreport')
+      .addItem('產生監照報表', 'gen_surv_Tempreport')
       .addItem('產生施工明細', 'gen_detail_TempReport')
       .addToUi();
   SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
       .createMenu('列印漆屋報表')
-      .addItem('列印施工日誌', 'ToPrintWorkDiary')
-      .addItem('列印監照報表', 'gen_survalliance_Tempreport')
-      .addItem('列印施工明細', 'gen_detail_TempReport')
+      .addItem('列印所有報表', 'printWorkTemp2pdf')
+      // .addItem('列印監照報表', 'printWorkTemp2pdf')
+      // .addItem('列印施工明細', 'printWorkTemp2pdf')
       .addToUi();
 }
 

@@ -1,14 +1,22 @@
-function gen_survalliance_Tempreport() {
+//to gen the tempSheet copy from the sheet template assigned
+function copySheet4tempPasteUse(sourceSheet,tempName){
+  var newSheet=sourceSheet.copyTo(gspreadsheet);
+  newSheet.setName(tempName);
+  return newSheet;
+}
+
+function gen_surv_Tempreport() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var sheets = spreadsheet.getSheets();
   var wildcard = "temp施工*"; // Replace "YourWildcardHere" with your wildcard pattern
   var matchingSheets = [];
   
-  for (var i = 0; i < sheets.length; i++) {
+  for (let i = 0; i < sheets.length; i++) {
     if (sheets[i].getName().match(wildcard)) {
       matchingSheets.push(sheets[i]);
     }
   }
+
   var i=0;
   if (matchingSheets.length > 0) {
     matchingSheets.forEach(function(sheet_diary){

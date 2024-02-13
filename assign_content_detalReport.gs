@@ -13,10 +13,10 @@ function gen_detail_TempReport() {
   if (matchingSheets.length > 0) {
     matchingSheets.forEach(function(sheet_diary){
       console.log(sheet_diary.getRange('C2').getValue());
-      var tempSheet=copySheet4tempPasteUse(gspreadsheet.getSheetByName('公共工程監造報表'),'temp'+'監造'+(i+1));
+      var tempSheet=copySheet4tempPasteUse(gspreadsheet.getSheetByName('施工明細表'),'temp'+'明細'+(i+1));
       tempSheet.getRange('C2').setValue(sheet_diary.getRange('C2').getValue());
-      tempSheet.getRange('G3').setValue(sheet_diary.getRange('P3:R3').getValue());
-      tempSheet.getRange('H3').setValue(sheet_diary.getRange('S3:T3').getValue());
+      tempSheet.getRange('G4').setValue(sheet_diary.getRange('P3:R3').getValue());
+      tempSheet.getRange('H4').setValue(sheet_diary.getRange('S3:T3').getValue());
 
       //items name
       //3 lines
