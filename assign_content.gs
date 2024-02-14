@@ -46,6 +46,9 @@ function mapContent4no_acc() {
     let year=dt.getFullYear()-1911;
     day=parseInt(day,10);
     mon=mon+1;
+
+    //set 累計工期
+    tempSheet.getRange("H5:I5").setValue(tempSheet.getRange("H5:I5").getValue()+((i-(D-2))-1));
     let taiwan_format=('民國'+year.toString()+'年'+mon.toString()+'月'+day.toString()+'日');
     tempSheet.getRange("P3:R3").setValue(taiwan_format);  //show date in taiwan format
     tempSheet.getRange("D3").setValue(columns_src[i][1]);

@@ -64,7 +64,6 @@ function exportSpreadsheetAsPdf(spreadsheetId, folderId) {
     file = DriveApp.createFile(blob);
   }
 
-  // var gspreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var sheets = gspreadsheet.getSheets();
   var wildcard = "temp*"; // Replace "YourWildcardHere" with your wildcard pattern
   var matchingSheets = [];
@@ -81,6 +80,8 @@ function exportSpreadsheetAsPdf(spreadsheetId, folderId) {
   });
 
 
-  // return file.getUrl();
+  return ContentService.createTextOutput(file.getBlob().getBytes())
+    .setMimeType(ContentService.MimeType.PDF) // Or use the appropriate MIME type
+    .downloadAsFile(file.getName());
 }
 

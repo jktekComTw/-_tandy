@@ -1,4 +1,4 @@
-const EndCol=32;
+const EndCol=40;
 const EndRow=38;
 const StartRow=1;
 
@@ -10,7 +10,6 @@ function numFormat(num){
 var sheet_no_acc = SpreadsheetApp.getActive().getSheetByName("no_acumulation");
 var sheet_acc = SpreadsheetApp.getActive().getSheetByName("with_acumulation");
 
-// sheet.activate();
 
 function CopyAndAcc4Grids(sheet_org,sheet_tar){
   var preValue;

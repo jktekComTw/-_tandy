@@ -1,14 +1,18 @@
 const D=4;
 const gspreadsheet = SpreadsheetApp.getActive();
 
+// function doGet() {
+//   return HtmlService.createHtmlOutputFromFile('index');
+// }
+
 function onOpen() {
   SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
-      .createMenu('漆屋功能')
-      .addItem('產生日期', 'showSidebar')
+      .createMenu('漆屋報表初始化相關功能')
+      .addItem('初始資料填寫', 'showSidebar')
       .addItem('複製並累加', 'wrapCopyAndAcc4Grids')
       .addToUi();
   SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
-      .createMenu('漆屋報表')
+      .createMenu('漆屋報表產生')
       .addItem('產生施工日誌', 'ToPrintWorkDiary')
       .addItem('產生監照報表', 'gen_surv_Tempreport')
       .addItem('產生施工明細', 'gen_detail_TempReport')
@@ -16,20 +20,24 @@ function onOpen() {
   SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
       .createMenu('列印漆屋報表')
       .addItem('列印所有報表', 'printWorkTemp2pdf')
-      // .addItem('列印監照報表', 'printWorkTemp2pdf')
-      // .addItem('列印施工明細', 'printWorkTemp2pdf')
       .addToUi();
 }
 
 
 
 
+
 function showSidebar() {
   
-  var sheet = SpreadsheetApp.getActive().getSheetByName("no_acumulation");
-  sheet.activate();
-  let range=sheet.getRange(1,D,1,100);
+  var sheet = SpreadsheetApp.getActive().getSheetByName("with_acumulation");
+  
+  let range=sheet.getRange("D1:AH38");
   range.setValue("");
+
+  var sheet2 = SpreadsheetApp.getActive().getSheetByName("no_acumulation");
+  range=sheet2.getRange("D1:AH38");
+  range.setValue("");
+  sheet2.activate();
   
   var html = HtmlService.createHtmlOutputFromFile('options')
       .setTitle('請選擇日期範圍');
@@ -50,6 +58,11 @@ function processForm(formObject){
   var ed = formObject.ed;
   console.log('起始與結束日期:'+sd+"~"+ed);
   Logger.log('起始與結束日期:'+sd+"~"+ed);
+
+  var startDay=formObject.startDay;
+  console.log(startDay);
+  let sheet=gspreadsheet.getSheetByName('施工日誌');
+  sheet.getRange("H5:I5").setValue(startDay);
   testListDatesBetween(sd,ed,D);  //4 means D
 }
 

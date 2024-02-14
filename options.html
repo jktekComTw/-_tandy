@@ -12,27 +12,16 @@
 
 
 function checkIfValidDate(ele) {
-  // const val = ele.value;
-  
-  // Regular expression to check if string is valid date
-  // const regexExp = ;
   if (/^\d{4}[\/](0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])$/.test(ele.value)==false){
     ele.value="格式錯誤!";
   }
-  
 }
-//todo:
-// function checkDateOrder(){
-//   let d1=new Date(document.getElementById("sd").value);
-//   let d2=new Date(document.getElementById("ed").value);
 
-//   if (>d2){
-//     let td1=document.getElementById("warn");
-//     td1.innerHTML="日期順序錯誤";
-//   }
-// }
-
-// onmouseenter
+function checkIfPosInteger(ele){
+  if(/^[1-9]\d*$|^0$/.test(ele.value)==false){
+    ele.value="請填入正整數";
+  };
+}
 
 </script>
 
@@ -56,8 +45,12 @@ function checkIfValidDate(ele) {
   <td><input id="ed" type="text" name="ed" value="" onblur="checkIfValidDate(this)"/>
   </td>
   </tr>
-  
+  <td></tr>
+  <tr><td>起始累積工期日數</td></tr>
   <tr><td>
+  <tr><td>
+  <input id="startDay" name="startDay" type="text" value="" onblur="checkIfPosInteger(this)"/>
+ 
   <input id="btn" type="submit"  value="送出">
   </td></tr>
   <tr><td id="warn">
@@ -80,12 +73,8 @@ function checkIfValidDate(ele) {
   
 
   function handleFormSubmit(formObject) {
-    // google.script.run.processForm();
     google.script.run.processForm(formObject);
   }
-  // function askSheetDo(){
-  //   // google.script.run.processForm();
-  // }
   
   
 </script>
