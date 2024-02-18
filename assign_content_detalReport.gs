@@ -14,7 +14,7 @@ function gen_detail_TempReport() {
     matchingSheets.forEach(function(sheet_diary){
       console.log(sheet_diary.getRange('C2').getValue());
       var tempSheet=copySheet4tempPasteUse(gspreadsheet.getSheetByName('施工明細表'),'temp'+'明細'+(i+1));
-      tempSheet.getRange('C2').setValue(sheet_diary.getRange('C2').getValue());
+      tempSheet.getRange('C2').setValue(gstartDay+i);
       tempSheet.getRange('G4').setValue(sheet_diary.getRange('P3:R3').getValue());
       tempSheet.getRange('H4').setValue(sheet_diary.getRange('S3:T3').getValue());
 

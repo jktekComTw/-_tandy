@@ -1,10 +1,6 @@
 const D=4;
 const gspreadsheet = SpreadsheetApp.getActive();
 
-// function doGet() {
-//   return HtmlService.createHtmlOutputFromFile('index');
-// }
-
 function onOpen() {
   SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
       .createMenu('漆屋報表初始化相關功能')
@@ -48,7 +44,7 @@ function showSidebar() {
 
 
 function processForm(formObject){
-
+  var gstartDay=formObject.startDay;
   //close the sidebar
   var html = HtmlService.createHtmlOutput("<script>google.script.host.close();</script>");
   SpreadsheetApp.getUi().showSidebar(html);
@@ -59,10 +55,10 @@ function processForm(formObject){
   console.log('起始與結束日期:'+sd+"~"+ed);
   Logger.log('起始與結束日期:'+sd+"~"+ed);
 
-  var startDay=formObject.startDay;
+  
   console.log(startDay);
   let sheet=gspreadsheet.getSheetByName('施工日誌');
-  sheet.getRange("H5:I5").setValue(startDay);
+  sheet.getRange("H5:I5").setValue(gstartDay);
   testListDatesBetween(sd,ed,D);  //4 means D
 }
 
