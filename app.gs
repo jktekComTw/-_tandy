@@ -56,7 +56,7 @@ function processForm(formObject){
   Logger.log('起始與結束日期:'+sd+"~"+ed);
 
   
-  console.log(startDay);
+  //console.log(startDay);
   let sheet=gspreadsheet.getSheetByName('施工日誌');
   sheet.getRange("H5:I5").setValue(gstartDay);
   testListDatesBetween(sd,ed,D);  //4 means D
