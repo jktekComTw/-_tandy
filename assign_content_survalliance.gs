@@ -22,7 +22,7 @@ function gen_surv_Tempreport() {
     matchingSheets.forEach(function(sheet_diary){
       console.log(sheet_diary.getRange('C2').getValue());
       var tempSheet=copySheet4tempPasteUse(gspreadsheet.getSheetByName('公共工程監造報表'),'temp'+'監造'+(i+1));
-      tempSheet.getRange('C2').setValue(gstartDay+i);
+      tempSheet.getRange('C2').setValue(sheet_diary.getRange('C2').getValue());
       tempSheet.getRange('D3').setValue(sheet_diary.getRange('D3').getValue());
       tempSheet.getRange('F3').setValue(sheet_diary.getRange('G3').getValue());
 
@@ -81,7 +81,7 @@ function gen_surv_Tempreport() {
       tempSheet.getRange('K24').setValue(sheet_diary.getRange('N27').getValue());
       tempSheet.getRange('K25').setValue(sheet_diary.getRange('N29').getValue());
 
-      tempSheet.getRange('A44:B44').setValue(sheet_diary.getRange('A56').getValue());
+      tempSheet.getRange('C38:E38').setValue(sheet_diary.getRange('B56:D56').getValue());
 
       i++;
     });

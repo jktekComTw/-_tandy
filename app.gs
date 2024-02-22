@@ -44,7 +44,7 @@ function showSidebar() {
 
 
 function processForm(formObject){
-  var gstartDay=formObject.startDay;
+  var startDay=formObject.startDay;
   //close the sidebar
   var html = HtmlService.createHtmlOutput("<script>google.script.host.close();</script>");
   SpreadsheetApp.getUi().showSidebar(html);
@@ -56,9 +56,9 @@ function processForm(formObject){
   Logger.log('起始與結束日期:'+sd+"~"+ed);
 
   
-  //console.log(startDay);
+  console.log(startDay);
   let sheet=gspreadsheet.getSheetByName('施工日誌');
-  sheet.getRange("H5:I5").setValue(gstartDay);
+  sheet.getRange("H5:I5").setValue(startDay);
   testListDatesBetween(sd,ed,D);  //4 means D
 }
 

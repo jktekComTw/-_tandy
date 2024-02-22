@@ -34,11 +34,13 @@ function mapContent4no_acc() {
     }
   }
   
+
+
   for(var i=D-1;i<numCols_src;i++){
     
     var tempSheet=copySheet4tempPasteUse(gspreadsheet.getSheetByName('施工日誌'),'temp'+'施工'+(i-(D-2)));
     tempSheet.getRange("S3:T3").setValue(showDayOfWeek(columns_src[i][0]));  //show day of week
-    tempSheet.getRange("C2").setValue((i-(D-2)).toString());  //serial no.
+    //tempSheet.getRange("C2").setValue((i-(D-2)).toString());  //serial no.
     let dtt=columns_src[i][0].toString();
     let dt=new Date(dtt);
     let day=dt.getDate();
@@ -83,6 +85,7 @@ function mapContent4no_acc() {
     tempSheet.getRange("Q30:R30").setValue(columns_src[i][34-1]);
     tempSheet.getRange("Q32:R32").setValue(columns_src[i][36-1]);
     tempSheet.getRange("Q34:R34").setValue(columns_src[i][38-1]);
+    tempSheet.getRange("B56:D56").setValue(columns_src[i][39-1]);
   }
 }
 

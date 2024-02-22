@@ -4,7 +4,7 @@ function printWorkTemp2pdf(){
   
 }
 
-gArray=['施工日誌','公共工程監造報表','施工明細表','no_acumulation','with_acumulation'];
+gArray=['施工日誌','公共工程監造報表','施工明細表','no_acumulation','with_acumulation','上期累計'];
 
 function hideSheet(){
   
