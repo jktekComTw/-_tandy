@@ -80,8 +80,9 @@ function exportSpreadsheetAsPdf(spreadsheetId, folderId) {
   });
 
 
-  return ContentService.createTextOutput(file.getBlob().getBytes())
-    .setMimeType(ContentService.MimeType.PDF) // Or use the appropriate MIME type
-    .downloadAsFile(file.getName());
+// At the end of your function, instead of trying to download the file directly, return the file's URL
+// var ui = SpreadsheetApp.getUi();
+// var fileUrl = "https://drive.google.com/uc?export=download&id=" + file.getId();
+// ui.alert("Error", "下載檔案網址"+fileUrl, ui.ButtonSet.OK);
 }
 

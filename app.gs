@@ -16,6 +16,7 @@ function onOpen() {
   SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
       .createMenu('列印漆屋報表')
       .addItem('列印所有報表', 'printWorkTemp2pdf')
+      .addItem('顯示原始報表','showSheet')
       .addToUi();
 }
 
